@@ -32,6 +32,7 @@ exports.register = function (req, res) {
             })
           }
           return res.status(200).json({ 'registered': true })
+          console.log(res)
         })
       }
     })
@@ -59,10 +60,11 @@ exports.register = function (req, res) {
         json_token = jwt.sign(
           {
             userId: user.id,
-            username: user.username
+            username: user.username,
+            isAdmin: user.isAdmin
           },
-         env.secret,
-          { expiresIn: '1h' })
+          env.secret,
+          { expiresIn: '1d' })
   
         return res.json(json_token)
       }
@@ -71,6 +73,7 @@ exports.register = function (req, res) {
       }
     })
   }
+  
   exports.authMiddleware = function (req, res, next) {
     const json_token = req.headers.authorization
     try {

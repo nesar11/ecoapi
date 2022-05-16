@@ -27,12 +27,18 @@ const userSchema = new Schema({
     type: String,
     min: [4, 'Too short, min 4 characters are required'],
     max: [32, 'Too long, max 16 characters are required']
-  }
-},
-{isAdmin: {
-  type: Boolean,
-  default: false,
-},
+  },
+
+  isAdmin: {
+    type: Boolean,
+    default: false,
+
+  },
+  isActive: {
+    type: Boolean,
+    default: false,
+
+  },
 },
 
   { timestamps: true }
