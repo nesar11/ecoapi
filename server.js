@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes")
 const authRouters = require("./routes/authRouters")
 const productRoutes = require("./routes/productRoutes")
 const cartRoutes = require("./routes/carRoutes")
+const orderRoutes = require("./routes/orderRoutes")
 const cors = require("cors");
 
 dotenv.config();
@@ -18,11 +19,11 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }).then(
 
 app.use(cors());
 app.use(express.json());
-// app.use("/users", userroutes)
 app.use("/auth", authRouters)
 app.use("/users", userRoutes)
 app.use("/products", productRoutes)
 app.use("/carts", cartRoutes)
+app.use("/orders", orderRoutes)
 
 const PORT = process.env.PORT || 5000;
 
